@@ -1,0 +1,9 @@
+# IntelliJ
+.idea/
+*.iml
+
+# Maven
+target/
+
+# Maven HPI plugin
+work/

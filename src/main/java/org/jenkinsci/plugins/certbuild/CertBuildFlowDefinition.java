@@ -32,22 +32,6 @@ class CertBuildFlowDefinition extends FlowDefinition {
     }
 
     @Override public FlowExecution create(FlowExecutionOwner handle, TaskListener listener, List<? extends Action> actions) throws Exception {
-        Queue.Executable exec = handle.getExecutable();
-        if (!(exec instanceof WorkflowRun)) {
-            throw new IllegalStateException("inappropriate context");
-        }
-        WorkflowRun build = (WorkflowRun) exec;
-        WorkflowJob job = build.getParent();
-        BranchJobProperty property = job.getProperty(BranchJobProperty.class);
-        if (property == null) {
-            throw new IllegalStateException("inappropriate context");
-        }
-        Branch branch = property.getBranch();
-        ItemGroup<?> parent = job.getParent();
-        if (!(parent instanceof WorkflowMultiBranchProject)) {
-            throw new IllegalStateException("inappropriate context");
-        }
-
         return new CpsFlowDefinition(Util.fixNull(this.script), this.sandbox).create(handle, listener, actions);
     }
 

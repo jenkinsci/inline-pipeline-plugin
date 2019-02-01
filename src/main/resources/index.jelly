@@ -1,4 +1,4 @@
 <?jelly escape-by-default='true'?>
 <div>
-    Implement a pom.xml project recognizer
+    Allows you to define a multibranch pipeline directly in Jenkins.
 </div>

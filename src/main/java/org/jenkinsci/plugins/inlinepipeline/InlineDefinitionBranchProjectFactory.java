@@ -1,4 +1,4 @@
-package org.jenkinsci.plugins.certbuild;
+package org.jenkinsci.plugins.inlinepipeline;
 
 import hudson.Extension;
 import hudson.model.TaskListener;
@@ -11,14 +11,14 @@ import org.kohsuke.stapler.DataBoundSetter;
 
 import java.io.IOException;
 
-public class CertBuildBranchProjectFactory extends AbstractWorkflowBranchProjectFactory {
+public class InlineDefinitionBranchProjectFactory extends AbstractWorkflowBranchProjectFactory {
 
     private String script;
     private boolean sandbox;
     private String markerFile;
 
     @DataBoundConstructor
-    public CertBuildBranchProjectFactory() {
+    public InlineDefinitionBranchProjectFactory() {
     }
 
     @DataBoundSetter
@@ -50,7 +50,7 @@ public class CertBuildBranchProjectFactory extends AbstractWorkflowBranchProject
 
 
     @Override protected FlowDefinition createDefinition() {
-        return new CertBuildFlowDefinition(this.script, this.sandbox);
+        return new InlineFlowDefinition(this.script, this.sandbox);
     }
 
     @Override public SCMSourceCriteria getSCMSourceCriteria(SCMSource source) {

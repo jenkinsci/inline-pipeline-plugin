@@ -1,32 +1,27 @@
-package org.jenkinsci.plugins.certbuild;
+package org.jenkinsci.plugins.inlinepipeline;
 
 import hudson.Extension;
 import hudson.Util;
 import hudson.model.Action;
 import hudson.model.Descriptor;
 import hudson.model.DescriptorVisibilityFilter;
-import hudson.model.ItemGroup;
-import hudson.model.Queue;
 import hudson.model.TaskListener;
-import jenkins.branch.Branch;
 import org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition;
 import org.jenkinsci.plugins.workflow.flow.FlowDefinition;
 import org.jenkinsci.plugins.workflow.flow.FlowDefinitionDescriptor;
 import org.jenkinsci.plugins.workflow.flow.FlowExecution;
 import org.jenkinsci.plugins.workflow.flow.FlowExecutionOwner;
 import org.jenkinsci.plugins.workflow.job.WorkflowJob;
-import org.jenkinsci.plugins.workflow.job.WorkflowRun;
-import org.jenkinsci.plugins.workflow.multibranch.BranchJobProperty;
 import org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject;
 
 import java.util.List;
 
-class CertBuildFlowDefinition extends FlowDefinition {
+class InlineFlowDefinition extends FlowDefinition {
 
     private String script;
     private boolean sandbox;
 
-    public CertBuildFlowDefinition(String script, boolean sandbox) {
+    public InlineFlowDefinition(String script, boolean sandbox) {
         this.script = script;
         this.sandbox = sandbox;
     }

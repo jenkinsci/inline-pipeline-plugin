@@ -1,4 +1,4 @@
-package org.jenkinsci.plugins.certbuild;
+package org.jenkinsci.plugins.inlinepipeline;
 
 import hudson.Extension;
 import jenkins.branch.MultiBranchProjectFactory;
@@ -12,14 +12,14 @@ import org.kohsuke.stapler.DataBoundSetter;
 
 import java.io.IOException;
 
-public class CertBuildMultiBranchProjectFactory extends AbstractWorkflowMultiBranchProjectFactory {
+public class InlineDefinitionMultiBranchProjectFactory extends AbstractWorkflowMultiBranchProjectFactory {
 
     private String markerFile;
     private String script;
     private boolean sandbox;
 
     @DataBoundConstructor
-    public CertBuildMultiBranchProjectFactory() {
+    public InlineDefinitionMultiBranchProjectFactory() {
     }
 
     @DataBoundSetter
@@ -53,8 +53,8 @@ public class CertBuildMultiBranchProjectFactory extends AbstractWorkflowMultiBra
         return newProjectFactory().getSCMSourceCriteria(source);
     }
 
-    private CertBuildBranchProjectFactory newProjectFactory() {
-        CertBuildBranchProjectFactory factory = new CertBuildBranchProjectFactory();
+    private InlineDefinitionBranchProjectFactory newProjectFactory() {
+        InlineDefinitionBranchProjectFactory factory = new InlineDefinitionBranchProjectFactory();
         factory.setSandbox(sandbox);
         factory.setScript(script);
         factory.setMarkerFile(markerFile);
@@ -64,7 +64,7 @@ public class CertBuildMultiBranchProjectFactory extends AbstractWorkflowMultiBra
     @Extension public static class DescriptorImpl extends MultiBranchProjectFactoryDescriptor {
 
         @Override public MultiBranchProjectFactory newInstance() {
-            return new CertBuildMultiBranchProjectFactory();
+            return new InlineDefinitionMultiBranchProjectFactory();
         }
 
         @Override public String getDisplayName() {

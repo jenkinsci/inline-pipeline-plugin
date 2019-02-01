@@ -14,7 +14,7 @@
         <jenkins.version>2.60.1</jenkins.version>
         <java.level>8</java.level>
     </properties>
-    <name>Jenkins CERT Build Plugin</name>
+    <name>Multibranch Pipeline Inline Definition Plugin</name>
     <licenses>
         <license>
             <name>MIT License</name>

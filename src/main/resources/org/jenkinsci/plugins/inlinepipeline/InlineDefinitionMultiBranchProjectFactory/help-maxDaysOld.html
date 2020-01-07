@@ -1,0 +1,35 @@
+<div>
+    <p>
+        The maximum amount of days a commit at the head of a branch, tag or pull request
+        may be old before being ignored. 
+    </p>
+    <p>
+    	Branches, tags or pull requests older than this will be ignored.
+    	The default is <strong>0</strong> which basically deactivates this feature.
+    	If the value is changed to any positive number above <strong>0</strong>, 
+    	branches, tags or pull requests older than the amount of days mentioned
+    	will be ignored.
+    </p>
+    <p>
+    	As a basis of the time-restriction, the last modification timestamp of the head commit 
+    	is used together with the current system time. If the current system time is 
+    	2020-01-10 11:20 AM GMT and the maximum commit age is set to 3 days, anything after
+    	2020-01-07 11:20 AM GMT (system time) will be built. 
+    </p>
+    <p>
+    	If a new tag or branch is created with an old head commit, it is possible that the 
+    	filtering mechanism will ignore this "new" branch or tag even though it just was 
+    	created a few moments ago. This is due to the fact that git only tracks timestamps
+    	of commits and not those of branches, tags or pull requests. 
+    </p>
+    <p>
+    	Some SCM plugins do not support the retrieval of timestamps of commits. In this
+    	case the time-restriction will be ignored. Known plugins in which this is the case 
+    	are the <a href="https://github.com/jenkinsci/mercurial-plugin">mercurial plugin</a>
+    	and some cases in <a href="https://github.com/jenkinsci/gitea-plugin">gitea plugin</a>.
+    	There are also some error cases where within SCM plugins that might cause this feature
+    	to be disabled.
+    	Nonetheless, the support for this feature in general is good and should not cause any
+    	issues with most plugins.
+    </p>
+</div>

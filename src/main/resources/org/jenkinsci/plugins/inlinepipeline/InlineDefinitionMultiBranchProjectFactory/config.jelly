@@ -1,5 +1,8 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form" xmlns:wfe="/org/jenkinsci/plugins/workflow/editor">
+    <f:entry title="${%Max. commit age (days)}" field="maxDaysOld">
+        <f:textbox />
+    </f:entry>
     <f:entry title="${%Markerfile}" field="markerFile">
         <f:textbox />
     </f:entry>

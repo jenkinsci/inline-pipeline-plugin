@@ -17,9 +17,19 @@ public class InlineDefinitionMultiBranchProjectFactory extends AbstractWorkflowM
     private String markerFile;
     private String script;
     private boolean sandbox;
+    private long maxDaysOld = 0;
 
     @DataBoundConstructor
     public InlineDefinitionMultiBranchProjectFactory() {
+    }
+
+    @DataBoundSetter
+    public void setMaxDaysOld(long maxDaysOld) {
+        this.maxDaysOld = maxDaysOld;
+    }
+
+    public long getMaxDaysOld() {
+        return maxDaysOld;
     }
 
     @DataBoundSetter
@@ -60,7 +70,7 @@ public class InlineDefinitionMultiBranchProjectFactory extends AbstractWorkflowM
         factory.setMarkerFile(markerFile);
         return factory;
     }
-    
+
     @Extension public static class DescriptorImpl extends MultiBranchProjectFactoryDescriptor {
 
         @Override public MultiBranchProjectFactory newInstance() {

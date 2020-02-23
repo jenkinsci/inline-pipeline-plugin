@@ -4,21 +4,21 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>2.33</version>
+        <version>3.56</version>
         <relativePath />
     </parent>
     <artifactId>inline-pipeline</artifactId>
     <version>1.1-SNAPSHOT</version>
     <packaging>hpi</packaging>
     <properties>
-        <jenkins.version>2.60.1</jenkins.version>
+        <jenkins.version>2.190.1</jenkins.version>
         <java.level>8</java.level>
     </properties>
     <name>Multibranch Pipeline Inline Definition Plugin</name>
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>http://opensource.org/licenses/MIT</url>
+            <url>https://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
     <scm>

@@ -8,7 +8,7 @@
         <relativePath />
     </parent>
     <artifactId>inline-pipeline</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>hpi</packaging>
     <properties>
         <jenkins.version>2.190.1</jenkins.version>
@@ -25,7 +25,7 @@
         <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
-      <tag>inline-pipeline-1.0.1</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <dependencies>

@@ -1,8 +1,8 @@
-# Multibranch Inline Pipeline Definition Plugin
+= Multibranch Inline Pipeline Definition Plugin
 
 This plugin allows defining a central Jenkins Pipeline for all jobs in a multibranch pipeline or even organization folder.
 
-## Configuration
+== Configuration
 
 The plugin adds:
 
@@ -17,8 +17,7 @@ Both have the same options:
 
 NOTE: A common way to version-control the Pipeline DSL here is to have it be a one-liner that calls a function defined in a shared library.
 
-
-## Differences from Pipeline Multibranch Defaults Plugin
+== Differences from Pipeline Multibranch Defaults Plugin
 
 This plugin was initially developed for internal use by the https://jenkins.io/security/[Jenkins security team]
 while Pipeline Multibranch Defaults Plugin only existed in its https://github.com/jenkinsci/pipeline-multibranch-defaults-plugin#warnings[flawed 1.x implementation].

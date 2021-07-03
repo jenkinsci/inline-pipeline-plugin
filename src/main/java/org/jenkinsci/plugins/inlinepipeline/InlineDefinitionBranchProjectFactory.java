@@ -50,7 +50,7 @@ public class InlineDefinitionBranchProjectFactory extends AbstractWorkflowBranch
 
 
     @Override protected FlowDefinition createDefinition() {
-        return new InlineFlowDefinition(this.script, this.sandbox);
+        return new InlineFlowDefinition(this.script, this.sandbox, this.markerFile);
     }
 
     @Override public SCMSourceCriteria getSCMSourceCriteria(SCMSource source) {

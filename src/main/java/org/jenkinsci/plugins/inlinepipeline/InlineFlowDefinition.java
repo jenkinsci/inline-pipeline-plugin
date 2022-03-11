@@ -16,7 +16,7 @@ import org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject;
 
 import java.util.List;
 
-class InlineFlowDefinition extends FlowDefinition {
+public class InlineFlowDefinition extends FlowDefinition {
 
     private String script;
     private boolean sandbox;

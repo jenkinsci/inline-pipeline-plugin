@@ -8,7 +8,7 @@
     <relativePath />
   </parent>
   <artifactId>inline-pipeline</artifactId>
-  <version>${revision}${changelist}</version>
+  <version>1.0.3</version>
   <packaging>hpi</packaging>
   <name>Multibranch Pipeline Inline Definition Plugin</name>
   <licenses>
@@ -20,7 +20,7 @@
   <scm>
     <connection>scm:git:git://github.com/${gitHubRepo}.git</connection>
     <developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
-    <tag>${scmTag}</tag>
+    <tag>inline-pipeline-1.0.3</tag>
     <url>https://github.com/${gitHubRepo}</url>
   </scm>
   <properties>

@@ -2,14 +2,13 @@ package org.jenkinsci.plugins.inlinepipeline;
 
 import hudson.Extension;
 import hudson.model.TaskListener;
+import java.io.IOException;
 import jenkins.scm.api.SCMSource;
 import jenkins.scm.api.SCMSourceCriteria;
 import org.jenkinsci.plugins.workflow.flow.FlowDefinition;
 import org.jenkinsci.plugins.workflow.multibranch.AbstractWorkflowBranchProjectFactory;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.DataBoundSetter;
-
-import java.io.IOException;
 
 public class InlineDefinitionBranchProjectFactory extends AbstractWorkflowBranchProjectFactory {
 
@@ -18,8 +17,7 @@ public class InlineDefinitionBranchProjectFactory extends AbstractWorkflowBranch
     private String markerFile;
 
     @DataBoundConstructor
-    public InlineDefinitionBranchProjectFactory() {
-    }
+    public InlineDefinitionBranchProjectFactory() {}
 
     @DataBoundSetter
     public void setScript(String script) {
@@ -48,14 +46,16 @@ public class InlineDefinitionBranchProjectFactory extends AbstractWorkflowBranch
         this.markerFile = markerFile;
     }
 
-
-    @Override protected FlowDefinition createDefinition() {
+    @Override
+    protected FlowDefinition createDefinition() {
         return new InlineFlowDefinition(this.script, this.sandbox);
     }
 
-    @Override public SCMSourceCriteria getSCMSourceCriteria(SCMSource source) {
+    @Override
+    public SCMSourceCriteria getSCMSourceCriteria(SCMSource source) {
         return new SCMSourceCriteria() {
-            @Override public boolean isHead(SCMSourceCriteria.Probe probe, TaskListener listener) throws IOException {
+            @Override
+            public boolean isHead(SCMSourceCriteria.Probe probe, TaskListener listener) throws IOException {
                 return probe.exists(markerFile);
             }
         };
@@ -64,7 +64,8 @@ public class InlineDefinitionBranchProjectFactory extends AbstractWorkflowBranch
     @Extension
     public static class DescriptorImpl extends AbstractWorkflowBranchProjectFactoryDescriptor {
 
-        @Override public String getDisplayName() {
+        @Override
+        public String getDisplayName() {
             return "Common pipeline definition for markerfile";
         }
     }

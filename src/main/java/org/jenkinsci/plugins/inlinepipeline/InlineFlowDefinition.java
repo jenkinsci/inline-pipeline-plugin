@@ -6,6 +6,7 @@ import hudson.model.Action;
 import hudson.model.Descriptor;
 import hudson.model.DescriptorVisibilityFilter;
 import hudson.model.TaskListener;
+import java.util.List;
 import org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition;
 import org.jenkinsci.plugins.workflow.flow.FlowDefinition;
 import org.jenkinsci.plugins.workflow.flow.FlowDefinitionDescriptor;
@@ -13,8 +14,6 @@ import org.jenkinsci.plugins.workflow.flow.FlowExecution;
 import org.jenkinsci.plugins.workflow.flow.FlowExecutionOwner;
 import org.jenkinsci.plugins.workflow.job.WorkflowJob;
 import org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject;
-
-import java.util.List;
 
 class InlineFlowDefinition extends FlowDefinition {
 
@@ -26,17 +25,19 @@ class InlineFlowDefinition extends FlowDefinition {
         this.sandbox = sandbox;
     }
 
-    @Override public FlowExecution create(FlowExecutionOwner handle, TaskListener listener, List<? extends Action> actions) throws Exception {
+    @Override
+    public FlowExecution create(FlowExecutionOwner handle, TaskListener listener, List<? extends Action> actions)
+            throws Exception {
         return new CpsFlowDefinition(Util.fixNull(this.script), this.sandbox).create(handle, listener, actions);
     }
 
     @Extension
     public static class DescriptorImpl extends FlowDefinitionDescriptor {
 
-        @Override public String getDisplayName() {
+        @Override
+        public String getDisplayName() {
             return "Inline pipeline definition from multibranch";
         }
-
     }
 
     /** Want to display this in the r/o configuration for a branch project, but not offer it on standalone jobs or in any other context. */
@@ -44,13 +45,13 @@ class InlineFlowDefinition extends FlowDefinition {
     public static class HideMeElsewhere extends DescriptorVisibilityFilter {
 
         @SuppressWarnings("rawtypes")
-        @Override public boolean filter(Object context, Descriptor descriptor) {
+        @Override
+        public boolean filter(Object context, Descriptor descriptor) {
             if (descriptor instanceof DescriptorImpl) {
-                return context instanceof WorkflowJob && ((WorkflowJob) context).getParent() instanceof WorkflowMultiBranchProject;
+                return context instanceof WorkflowJob
+                        && ((WorkflowJob) context).getParent() instanceof WorkflowMultiBranchProject;
             }
             return true;
         }
-
     }
-
 }

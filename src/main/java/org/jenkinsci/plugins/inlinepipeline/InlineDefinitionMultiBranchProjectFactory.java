@@ -1,6 +1,7 @@
 package org.jenkinsci.plugins.inlinepipeline;
 
 import hudson.Extension;
+import java.io.IOException;
 import jenkins.branch.MultiBranchProjectFactory;
 import jenkins.branch.MultiBranchProjectFactoryDescriptor;
 import jenkins.scm.api.SCMSource;
@@ -10,8 +11,6 @@ import org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.DataBoundSetter;
 
-import java.io.IOException;
-
 public class InlineDefinitionMultiBranchProjectFactory extends AbstractWorkflowMultiBranchProjectFactory {
 
     private String markerFile;
@@ -19,8 +18,7 @@ public class InlineDefinitionMultiBranchProjectFactory extends AbstractWorkflowM
     private boolean sandbox;
 
     @DataBoundConstructor
-    public InlineDefinitionMultiBranchProjectFactory() {
-    }
+    public InlineDefinitionMultiBranchProjectFactory() {}
 
     @DataBoundSetter
     public void setScript(String script) {
@@ -49,7 +47,8 @@ public class InlineDefinitionMultiBranchProjectFactory extends AbstractWorkflowM
         this.markerFile = markerFile;
     }
 
-    @Override protected SCMSourceCriteria getSCMSourceCriteria(SCMSource source) {
+    @Override
+    protected SCMSourceCriteria getSCMSourceCriteria(SCMSource source) {
         return newProjectFactory().getSCMSourceCriteria(source);
     }
 
@@ -60,17 +59,19 @@ public class InlineDefinitionMultiBranchProjectFactory extends AbstractWorkflowM
         factory.setMarkerFile(markerFile);
         return factory;
     }
-    
-    @Extension public static class DescriptorImpl extends MultiBranchProjectFactoryDescriptor {
 
-        @Override public MultiBranchProjectFactory newInstance() {
+    @Extension
+    public static class DescriptorImpl extends MultiBranchProjectFactoryDescriptor {
+
+        @Override
+        public MultiBranchProjectFactory newInstance() {
             return new InlineDefinitionMultiBranchProjectFactory();
         }
 
-        @Override public String getDisplayName() {
+        @Override
+        public String getDisplayName() {
             return "Common pipeline definition for markerfile";
         }
-
     }
 
     @Override

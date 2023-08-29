@@ -28,6 +28,7 @@
     <changelist>-SNAPSHOT</changelist>
     <gitHubRepo>jenkinsci/inline-pipeline-plugin</gitHubRepo>
     <jenkins.version>2.361.4</jenkins.version>
+    <spotless.check.skip>false</spotless.check.skip>
   </properties>
 
   <dependencyManagement>
